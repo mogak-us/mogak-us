@@ -1,5 +1,5 @@
 """
-WSGI config for django_inertia_vue_scaffold project.
+WSGI config for mogak_us project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_inertia_vue_scaffold.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mogak_us.settings")
 
 application = get_wsgi_application()

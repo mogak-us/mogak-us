@@ -1,4 +1,4 @@
-"""django_inertia_vue_scaffold URL Configuration
+"""mogak_us URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
