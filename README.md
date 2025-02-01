@@ -89,3 +89,12 @@ A basic, Django + Inertia + Vue with Vite
    ```sh
    python manage.py runserver
    ```
+
+
+
+
+-----
+
+
+
+See https://github.com/oboynitro/django_inertia_vue_scaffold/tree/main
