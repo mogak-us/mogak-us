@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "mogak-us"
+version = "0.1.0"
+description = ""
+authors = ["jaeyeol lee <jaeyeol.lee@hey.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1.5"
+django-allauth = "^65.3.1"
+django-vite = "^3.0.6"
+inertia-django = "^1.1.0"
+python-decouple = "^3.8"
+whitenoise = "^6.8.2"
+black = "^25.1.0"
+pillow = "^11.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.4"
+ruff-lsp = "^0.0.60"
+pyright = "^1.1.393"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
