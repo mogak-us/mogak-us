@@ -5,10 +5,15 @@
   "workspaceFolder": "/app",
   "extensions": [
     "ms-python.python",
-    "ms-python.vscode-pylance"
+    "ms-python.vscode-pylance",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
   ],
   "settings": {
-    "python.pythonPath": "/usr/local/bin/python"
+    "python.pythonPath": "/usr/local/bin/python",
+    "editor.formatOnSave": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
   },
-  "postCreateCommand": "poetry install"
+  "postCreateCommand": "poetry install && python manage.py migrate"
 }
