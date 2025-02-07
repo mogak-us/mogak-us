@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-AUTH_USER_MODEL = 'main.CustomUser'
+AUTH_USER_MODEL = 'main.MogakUser'
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
