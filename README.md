@@ -60,6 +60,20 @@ A basic, Django + Inertia + Vue with Vite
    python manage.py runserver
    ```
 
+## Aider Configuration
+
+This project includes a `.aider.config.yml` file for configuring the Aider tool. Below is a basic example of what this configuration file might contain:
+
+```yaml
+# Aider configuration file
+
+# Example configuration options
+editor: vim
+language: en_US
+```
+
+You can customize these settings according to your preferences.
+
 ## How to build for production
 
 1. Set `DEBUG=False` in [settings.py](./inertia_django_vite_vue_minimal/settings.py).
