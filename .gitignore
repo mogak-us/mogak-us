@@ -157,4 +157,5 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+.aider*
 !.aider.config.yml
