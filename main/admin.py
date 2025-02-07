@@ -5,5 +5,6 @@ from .models import MogakUser
 class MogakUserAdmin(admin.ModelAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff', 'is_active')
     exclude = ('password', 'groups', 'user_permissions')
+    readonly_fields = ('email',)
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
