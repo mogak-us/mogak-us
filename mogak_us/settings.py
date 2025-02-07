@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
+AUTH_USER_MODEL = 'main.CustomUser'
+
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.admin",
