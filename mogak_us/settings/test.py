@@ -12,11 +12,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-# Use an in-memory database for tests
+# Use PostgreSQL for tests
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": ":memory:",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "test_your_db_name",
+        "USER": "your_db_user",
+        "PASSWORD": "your_db_password",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
