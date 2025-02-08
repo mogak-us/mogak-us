@@ -1,6 +1,8 @@
 # Use the official Python image from the Docker Hub
 FROM python:3.12-slim
 
+ARG DJANGO_SETTINGS_MODULE
+
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -26,6 +28,8 @@ COPY . /app/
 
 # Expose the port the app runs on
 EXPOSE 8000
+
+ENV DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 
 # Run the application
 CMD ["sh", "-c", "poetry run python manage.py migrate && poetry run python manage.py runserver 0.0.0.0:8000"]

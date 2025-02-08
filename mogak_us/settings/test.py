@@ -19,7 +19,7 @@ DATABASES = {
         "NAME": "test_db_name",  # Replace with your test database name
         "USER": "test_db_user",  # Replace with your test database user
         "PASSWORD": "test_db_password",  # Replace with your test database password
-        "HOST": "localhost",
+        "HOST": "db",
         "PORT": "5432",
     }
 }

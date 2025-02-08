@@ -1,9 +1,11 @@
 version: '3.8'
 
+name: mogak_us_test
+
 services:
   test:
     build: .
-    command: sh -c "poetry run python manage.py test main.tests --settings=mogak_us.settings.test"
+    command: sh -c "poetry run python manage.py test main.tests"
     volumes:
       - .:/app
     environment:
@@ -12,6 +14,7 @@ services:
       POSTGRES_PASSWORD: test_db_password
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
+      DJANGO_SETTINGS_MODULE: mogak_us.settings.test
     depends_on:
       - db
 
