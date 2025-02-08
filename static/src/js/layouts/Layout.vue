@@ -7,7 +7,7 @@ defineProps({
 <template>
   <div>
     <header>
-      <h1>{{ title }}</h1>
+      <h1 class="text-3xl font-black">{{ title }}</h1>
       <!-- Add navigation or other header content here -->
     </header>
     <main>
