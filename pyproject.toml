@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["jaeyeol lee <jaeyeol.lee@hey.com>"]
 readme = "README.md"
+packages = [{ include = "mogak_us" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
