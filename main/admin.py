@@ -10,10 +10,14 @@ class MogakUserAdmin(admin.ModelAdmin):
     ordering = ('email',)
 @admin.register(Meetup)
 class MeetupAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date')
-    search_fields = ('name',)
+    list_display = ('name', 'date', 'owner')
+    search_fields = ('name', 'owner__email')
+    list_filter = ('date', 'owner')
+    ordering = ('date',)
 
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
     list_display = ('user', 'meetup', 'attended_at')
     search_fields = ('user__email', 'meetup__name')
+    list_filter = ('attended_at', 'meetup')
+    ordering = ('attended_at',)
