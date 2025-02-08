@@ -45,6 +45,11 @@ class MogakUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
+    def owned_workspaces(self):
+        workspace_memberships = WorkspaceMembership.objects.filter(user=self, role=ROLE['OWNER'])
+        return [membership.workspace for membership in workspace_memberships]
+
+
 class Meetup(models.Model):
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(MogakUser, on_delete=models.CASCADE, related_name='owned_meetups', null=True)
