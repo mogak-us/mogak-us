@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["static/src/js/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["static/src/js/**/*.ts", "static/src/js/**/*.vue"],
+  "exclude": ["node_modules"]
+}
