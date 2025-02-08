@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404, redirect, render as django_render
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
-from .models import Meetup, MogakUser, Attendance
+from .models import Meetup, MogakUser, Attendance, Workspace
 from inertia import render
 
 
@@ -41,6 +41,22 @@ def workspaces(request):
         for workspace in workspaces
     ]
     return render(request, "Dashboard/Workspaces", props={"workspaces": workspaces_json})
+
+@login_required 
+def workspace_detail(request, workspace_id):
+    workspace = get_object_or_404(Workspace, id=workspace_id)
+    meetups = workspace.meetups.all()
+    meetups_json = [
+        {
+            "id": meetup.id,
+            "name": meetup.name,
+            "date": meetup.date,
+        }
+        for meetup in meetups
+    ]
+    return render(request, "Dashboard/WorkspaceDetail", props={
+        "meetups": meetups_json
+        })
 
 @login_required
 def record_attendance(request, meetup_id, user_id):

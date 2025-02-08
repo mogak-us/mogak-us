@@ -1,5 +1,6 @@
 <template>
   <div class="workspace-item">
+    <a :href='`/workspaces/${workspace.id}`'>View</a>
     <h3>{{ workspace.name }}</h3>
     <p>ID: {{ workspace.id }}</p>
   </div>
