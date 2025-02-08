@@ -159,3 +159,4 @@ coverage
 *.sw?
 .aider*
 !.aider.config.yml
+!.aider.conf.yml
