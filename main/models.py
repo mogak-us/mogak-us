@@ -46,7 +46,7 @@ class MogakUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def owned_workspaces(self):
-        workspace_memberships = WorkspaceMembership.objects.filter(user=self, role=ROLE['OWNER'])
+        workspace_memberships = WorkspaceMembership.objects.filter(user=self, role='OWNER')
         return [membership.workspace for membership in workspace_memberships]
 
 

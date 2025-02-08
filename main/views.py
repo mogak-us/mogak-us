@@ -33,7 +33,13 @@ def login_view(request):
 def workspaces(request):
     user = request.user
     workspaces = user.owned_workspaces()
-    workspaces_json = [workspace.to_json() for workspace in workspaces]
+    workspaces_json = [
+        {
+            "id": workspace.id,
+            "name": workspace.name,
+        }
+        for workspace in workspaces
+    ]
     return render(request, "Dashboard/Workspaces", props={"workspaces": workspaces_json})
 
 @login_required
