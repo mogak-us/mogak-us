@@ -129,7 +129,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
 
 # Inertia settings
-INERTIA_LAYOUT = "base.html"
+INERTIA_LAYOUT = "inertia/base.html"
 
 # Vite generates files with 8 hash digits
 # http://whitenoise.evans.io/en/stable/django.html#WHITENOISE_IMMUTABLE_FILE_TEST
