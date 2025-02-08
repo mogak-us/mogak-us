@@ -5,6 +5,9 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y nodejs npm
+
 # Set the working directory
 WORKDIR /app
 
