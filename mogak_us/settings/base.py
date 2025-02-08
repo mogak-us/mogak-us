@@ -3,6 +3,7 @@ Base settings for mogak-us project.
 """
 
 from pathlib import Path
+import os
 import re
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,6 +57,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "mogak_us.wsgi.application"
+
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB", "your_db_name"),
+        "USER": os.getenv("POSTGRES_USER", "your_db_user"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "your_db_password"),
+        "HOST": os.getenv("POSTGRES_HOST", "localhost"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
