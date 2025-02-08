@@ -11,12 +11,6 @@ def index(request):
         props={"greetings": "Django + Inertia + Vue! with Vite, it works"},
     )
 
-def delete_meetup(request, meetup_id):
-    if request.method == "POST":
-        meetup = get_object_or_404(Meetup, id=meetup_id)
-        meetup.delete()
-        return JsonResponse({'deleted': True})
-    return HttpResponseNotAllowed(['POST'])
 def record_attendance(request, meetup_id, user_id):
     meetup = get_object_or_404(Meetup, id=meetup_id)
     user = get_object_or_404(MogakUser, id=user_id)
