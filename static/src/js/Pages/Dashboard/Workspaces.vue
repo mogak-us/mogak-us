@@ -1,5 +1,5 @@
 <script setup>
-import Layout from '@components/prelude/Layout.vue';
+import Layout from '@/layouts/Layout.vue';
 
 defineProps({
   workspaces: Array,
