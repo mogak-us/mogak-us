@@ -13,5 +13,12 @@
 		"radix-vue": "^1.9.13",
 		"vite": "^4.3.9",
 		"vue": "^3.3.4"
+	},
+	"devDependencies": {
+		"@vue/eslint-config-prettier": "^10.2.0",
+		"eslint": "^9.20.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-vue": "^9.32.0",
+		"prettier": "^3.4.2"
 	}
 }
