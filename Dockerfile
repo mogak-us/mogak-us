@@ -10,7 +10,12 @@ WORKDIR /app
 
 # Install dependencies
 COPY pyproject.toml poetry.lock /app/
+
 COPY README.md /app
+
+# Copy the package folder so that Poetry can find it during install
+COPY mogak_us /app/mogak_us
+
 RUN pip install poetry && poetry config virtualenvs.create false && poetry install
 
 # Copy the project files
