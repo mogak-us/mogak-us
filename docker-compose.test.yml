@@ -5,7 +5,7 @@ name: mogak_us_test
 services:
   test:
     build: .
-    command: sh -c "poetry run python manage.py test main.tests"
+    command: sh -c "poetry run ptw"
     volumes:
       - .:/app
     environment:
