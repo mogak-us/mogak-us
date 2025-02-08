@@ -15,6 +15,8 @@ def index(request):
 @login_required
 def record_attendance(request, meetup_id, user_id):
     meetup = get_object_or_404(Meetup, id=meetup_id)
+    print(meetup)
     user = get_object_or_404(MogakUser, id=user_id)
+    print(user)
     attendance, created = Attendance.objects.get_or_create(meetup=meetup, user=user)
     return JsonResponse({'attended': created})
