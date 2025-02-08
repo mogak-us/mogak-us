@@ -6,6 +6,11 @@ export default defineConfig({
 	root: resolve("./static/src/js"),
 	base: "/static/",
 	plugins: [vue()],
+	resolve: {
+		alias: {
+			'@components': resolve(__dirname, './static/src/js/Components'),
+		},
+	},
 	server: {
 		host: '0.0.0.0',
 		port: 5173,
