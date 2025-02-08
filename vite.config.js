@@ -6,6 +6,10 @@ export default defineConfig({
 	root: resolve("./static/src/js"),
 	base: "/static/",
 	plugins: [vue()],
+	server: {
+		host: '0.0.0.0',
+		port: 5173,
+	},
 	build: {
 		outDir: resolve("./static/dist"),
 		assetsDir: "",
