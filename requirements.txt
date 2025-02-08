@@ -7,4 +7,5 @@ whitenoise
 black
 pillow
 pytest
+pytest-django
 pytest-watch
