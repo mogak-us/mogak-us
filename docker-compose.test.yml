@@ -3,7 +3,7 @@ version: '3.8'
 services:
   test:
     build: .
-    command: sh -c "poetry run python manage.py test --settings=mogak_us.settings.test"
+    command: sh -c "poetry run python manage.py test main.tests --settings=mogak_us.settings.test"
     volumes:
       - .:/app
     environment:
