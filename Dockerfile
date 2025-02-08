@@ -25,4 +25,4 @@ COPY . /app/
 EXPOSE 8000
 
 # Run the application
-CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["sh", "-c", "poetry run python manage.py migrate && poetry run python manage.py runserver 0.0.0.0:8000"]
