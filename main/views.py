@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth import authenticate, login
+from django.shortcuts import get_object_or_404, redirect, render as django_render
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
 from .models import Meetup, MogakUser, Attendance
@@ -11,6 +12,22 @@ def index(request):
         "Dashboard/Index",
         props={"greetings": "Django + Inertia + Vue! with Vite, it works"},
     )
+
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            next_path = request.GET.get('next')
+            if next_path:
+                return redirect(next_path) 
+
+            return redirect('workspaces')
+        else:
+            return django_render(request, 'login.html', {'error': 'Invalid credentials'})
+    return django_render(request, 'accounts/login.html')
 
 @login_required
 def workspaces(request):
