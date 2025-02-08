@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <Layout>
+  <Layout title="workspaces">
     {{ workspaces }}
   </Layout>
 </template>
