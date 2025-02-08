@@ -41,6 +41,7 @@ class MogakUser(AbstractBaseUser, PermissionsMixin):
 
 class Meetup(models.Model):
     name = models.CharField(max_length=100)
+    owner = models.ForeignKey(MogakUser, on_delete=models.CASCADE, related_name='owned_meetups')
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
