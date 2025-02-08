@@ -2,6 +2,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db import models
 from django.utils import timezone
 
+ROLE = {
+    'OWNER': 'Owner',
+    'ADMIN': 'Admin',
+    'MEMBER': 'Member'
+}
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -42,6 +48,7 @@ class MogakUser(AbstractBaseUser, PermissionsMixin):
 class Meetup(models.Model):
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(MogakUser, on_delete=models.CASCADE, related_name='owned_meetups', null=True)
+    workspace = models.ForeignKey('Workspace', on_delete=models.CASCADE, related_name='meetups', null=True)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -54,4 +61,28 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.user.email} - {self.meetup.name}"
+
+
+class Workspace(models.Model):
+    name = models.CharField(max_length=100)
+    owners = models.ManyToManyField(MogakUser, related_name='owned_workspaces', through='WorkspaceMembership')
+
+
+    def __str__(self):
+        return self.name
+
+    def add_members(self, member_names: list[str]):
+        for member_name in member_names:
+            WorkspaceMembership.objects.create(workspace=self, alias_name=member_name)
+
+
+class WorkspaceMembership(models.Model):
+    user = models.ForeignKey(MogakUser, on_delete=models.CASCADE, null=True)
+    alias_name = models.CharField(max_length=100, blank=True)
+    role = models.CharField(max_length=10, choices=[(r, r) for r in ROLE.keys()], default=ROLE['MEMBER'])
+    workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE, related_name='memberships')
+    joined_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.workspace.name} - {self.alias_name}"
 
