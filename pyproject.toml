@@ -17,6 +17,8 @@ whitenoise = "^6.8.2"
 black = "^25.1.0"
 pillow = "^11.1.0"
 psycopg2-binary = "^2.9.10"
+pytest = "^7.4.0"
+pytest-watch = "^4.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
