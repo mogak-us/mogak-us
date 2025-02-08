@@ -70,8 +70,6 @@ class Attendance(models.Model):
 
 class Workspace(models.Model):
     name = models.CharField(max_length=100)
-    owners = models.ManyToManyField(MogakUser, related_name='owned_workspaces', through='WorkspaceMembership')
-
 
     def __str__(self):
         return self.name
