@@ -43,7 +43,7 @@ def workspaces(request):
     return render(request, "Dashboard/Workspaces", props={"workspaces": workspaces_json})
 
 @login_required 
-def workspace_detail(request, workspace_id):
+def meetup_list(request, workspace_id):
     workspace = get_object_or_404(Workspace, id=workspace_id)
     meetups = workspace.meetups.all()
     meetups_json = [
@@ -54,7 +54,7 @@ def workspace_detail(request, workspace_id):
         }
         for meetup in meetups
     ]
-    return render(request, "Dashboard/WorkspaceDetail", props={
+    return render(request, "Dashboard/MeetupList", props={
         "meetups": meetups_json,
         "workspace": {
             "id": workspace.id,
@@ -80,6 +80,28 @@ def meetup_detail(request, workspace_id, meetup_id):
             "date": meetup.date,
         }
     })
+
+
+@login_required 
+def workspace_detail(request, workspace_id):
+    workspace = get_object_or_404(Workspace, id=workspace_id)
+    meetups = workspace.meetups.all()
+    meetups_json = [ 
+        {
+            "id": meetup.id,
+            "name": meetup.name,
+            "date": meetup.date,
+        }
+        for meetup in meetups
+    ]
+    return render(request, "Dashboard/WorkspaceDetail", props={
+        "workspace": {
+            "id": workspace.id,
+            "name": workspace.name,
+        },
+        "meetups": meetups_json,
+    })
+
 
 @login_required
 def record_attendance(request, meetup_id, user_id):
