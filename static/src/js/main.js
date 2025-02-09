@@ -1,5 +1,9 @@
+import axios from "axios";
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
+
+axios.defaults.xsrfHeaderName = "X-CSRFToken"
+axios.defaults.xsrfCookieName = "csrftoken"
 
 createInertiaApp({
   resolve: (name) => {
