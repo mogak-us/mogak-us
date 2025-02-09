@@ -55,8 +55,12 @@ def workspace_detail(request, workspace_id):
         for meetup in meetups
     ]
     return render(request, "Dashboard/WorkspaceDetail", props={
-        "meetups": meetups_json
-        })
+        "meetups": meetups_json,
+        "workspace": {
+            "id": workspace.id,
+            "name": workspace.name,
+        }
+    })
 
 @login_required
 def record_attendance(request, meetup_id, user_id):
