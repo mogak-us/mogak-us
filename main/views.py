@@ -1,7 +1,9 @@
+import json
 from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404, redirect, render as django_render
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Meetup, MogakUser, Attendance, Workspace
 from inertia import render
 
@@ -80,6 +82,20 @@ def meetup_detail(request, workspace_id, meetup_id):
             "date": meetup.date,
         }
     })
+
+
+@ensure_csrf_cookie
+@login_required
+def add_members(request, workspace_id):
+    workspace = get_object_or_404(Workspace, id=workspace_id)
+    if request.method == 'POST':
+        # get json response from body 
+        byte_data = request.body
+        json_data = json.loads(byte_data)
+        member_names = json_data.get('member_names')
+        workspace.add_members(member_names)
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
 
 
 @login_required 

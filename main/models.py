@@ -76,6 +76,10 @@ class Workspace(models.Model):
 
     def add_members(self, member_names: list[str]):
         for member_name in member_names:
+            # Find matching alias name 
+            membership = WorkspaceMembership.objects.filter(workspace=self, alias_name=member_name).first()
+            if membership:
+                continue
             WorkspaceMembership.objects.create(workspace=self, alias_name=member_name)
 
 
