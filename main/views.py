@@ -62,6 +62,25 @@ def workspace_detail(request, workspace_id):
         }
     })
 
+@login_required 
+def meetup_detail(request, workspace_id, meetup_id):
+    workspace = get_object_or_404(Workspace, id=workspace_id)
+    meetup = get_object_or_404(Meetup, id=meetup_id)
+    if meetup.workspace != workspace:
+        return HttpResponseNotAllowed()
+
+    return render(request, "Dashboard/MeetupDetail", props={
+        "workspace": {
+            "id": workspace.id,
+            "name": workspace.name,
+        },
+        "meetup": {
+            "id": meetup.id,
+            "name": meetup.name,
+            "date": meetup.date,
+        }
+    })
+
 @login_required
 def record_attendance(request, meetup_id, user_id):
     meetup = get_object_or_404(Meetup, id=meetup_id)

@@ -16,7 +16,7 @@ defineProps({
   <WorkspaceLayout :workspace="workspace">
     <div id="meetups" class="grid grid-cols-4 gap-4">
       <div v-for="meetup in meetups" :key="meetup.id">
-        <MeetupItem :meetup="meetup" />
+        <MeetupItem :meetup="meetup" :workspace="workspace" />
       </div>
     </div>
   </WorkspaceLayout>

@@ -1,5 +1,10 @@
 <script setup>
 defineProps({
+  workspace: {
+    type: Object,
+    required: true,
+    validator: (obj) => 'id' in obj && 'name' in obj,
+  },
   meetup: {
     type: Object,
     required: true,
@@ -10,7 +15,7 @@ defineProps({
 
 <template>
   <div class="meetup-item">
-    <a :href='`/meetups/${meetup.id}`'>View</a>
+    <a :href='`/workspaces/${workspace.id}/meetups/${meetup.id}`'>View</a>
     <h3>{{ meetup.name }}</h3>
     <p>Date: {{ meetup.date }}</p>
   </div>
