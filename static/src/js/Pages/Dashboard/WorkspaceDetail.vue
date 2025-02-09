@@ -23,7 +23,7 @@ const memberNames = ref([]);
 
 const addMembers = () => {
   const names = memberNames.value
-  axios.post(`/workspaces/${props.workspace.id}/add_members/`, { member_names: names })
+  axios.post(`/api/workspaces/${props.workspace.id}/members/`, { member_names: names })
     .then((response) => {
       console.log(response.data);
     })
