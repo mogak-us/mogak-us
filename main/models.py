@@ -93,3 +93,5 @@ class WorkspaceMembership(models.Model):
     def __str__(self):
         return f"{self.workspace.name} - {self.alias_name}"
 
+
+# How can I do? AI!
