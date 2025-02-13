@@ -1,6 +1,15 @@
 # Mogak.us
 
-Community Member Management System
+## Introduction
+
+Mogak.us is a community management platform designed for individuals who want to gather and pursue their interests independently. The name "Mogak.us" is derived from the Korean words "모여서 각자" (Mogak) meaning "gather and do individually" and "우리" (Us) meaning "us". This platform is tailored for those who manage communities of people who wish to engage in activities together yet independently.
+
+## Main Concept
+
+The main concept of Mogak.us revolves around providing tools for effective community management. It is particularly focused on:
+
+- **Member Management**: Efficiently manage community members and their participation.
+- **Meeting Management**: Organize meetings, track attendance, and facilitate post-meeting retrospectives.
 
 
 ## Technologies
