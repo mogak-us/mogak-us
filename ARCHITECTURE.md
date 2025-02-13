@@ -11,7 +11,7 @@ The project is a web application built using Django as the backend framework, Vu
 ### Backend
 
 - **Django**: Serves as the primary backend framework, handling HTTP requests, database interactions, and business logic.
-- **Django Apps**: The project is structured into multiple Django apps, each responsible for a specific domain of the application.
+- **Django Apps**: The project is structured into multiple Django apps, each responsible for a specific domain of the application. The `main/api.py` file defines the API endpoints using Django Ninja.
 - **Django ORM**: Used for database interactions, providing an abstraction layer over the database.
 - **Django Allauth**: Manages user authentication and registration.
 - **Inertia-Django**: Bridges the gap between Django and Inertia.js, allowing for seamless SPA development.
@@ -20,7 +20,7 @@ The project is a web application built using Django as the backend framework, Vu
 
 - **Vue.js**: A progressive JavaScript framework used for building user interfaces.
 - **Vite**: A modern build tool that provides fast development and optimized production builds.
-- **Vue Components**: The UI is composed of reusable Vue components, organized by pages and layouts.
+- **Vue Components**: The UI is composed of reusable Vue components, organized by pages and layouts. The frontend source code is located in the `static/src/js` directory.
 
 ### Middleware
 
