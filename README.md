@@ -1,6 +1,7 @@
-# Django + Inertia + Vue with Vite scaffold
+# Mogak.us
 
-A basic, Django + Inertia + Vue with Vite
+Community Member Management System
+
 
 ## Technologies
 
