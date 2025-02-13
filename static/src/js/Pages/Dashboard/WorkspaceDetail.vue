@@ -19,41 +19,56 @@ const props =
     },
   });
 
-const memberNames = ref([]);
+const statistics = ref({
+  totalMeetups: props.meetups.length,
+  totalMembers: props.workspace.members.length,
+});
 
-const addMembers = () => {
-  const names = memberNames.value
-  axios.post(`/api/workspaces/${props.workspace.id}/members/`, { member_names: names })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
+const recentActivities = ref([
+  { id: 1, description: 'User A joined the workspace' },
+  { id: 2, description: 'Meetup B was created' },
+]);
+
+const notifications = ref([
+  { id: 1, message: 'New meetup scheduled for next week' },
+  { id: 2, message: 'Workspace settings updated' },
+]);
 
 </script>
 
 <template>
   <WorkspaceLayout :workspace="workspace">
-    <div>
-      <h2>Meetups</h2>
-      <div class="flex flex-col gap-y-4">
+    <div class="p-4 bg-white shadow rounded-lg mb-4">
+      <h2 class="text-xl font-bold mb-2">Meetups</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <MeetupItem v-for="meetup in meetups" :key="meetup.id" :workspace="workspace" :meetup="meetup" />
       </div>
     </div>
 
-    {/* Add Members using dynamic input */}
-    <div>
-      <h2>Members</h2>
-      <div class="flex flex-col gap-y-4">
-        <div v-for="(name, index) in memberNames" :key="index">
-          <input v-model="memberNames[index]" />
-          <button @click="memberNames.splice(index, 1)">Remove</button>
-        </div>
-        <button @click="memberNames.push('')">Add Member</button>
-      </div>
-      <button @click="addMembers">Add Members</button>
+    <div class="p-4 bg-white shadow rounded-lg mb-4">
+      <h2 class="text-xl font-bold mb-2">Statistics</h2>
+      <ul class="list-disc pl-5">
+        <li>Total Meetups: {{ statistics.totalMeetups }}</li>
+        <li>Total Members: {{ statistics.totalMembers }}</li>
+      </ul>
+    </div>
+
+    <div class="p-4 bg-white shadow rounded-lg mb-4">
+      <h2 class="text-xl font-bold mb-2">Recent Activities</h2>
+      <ul class="list-disc pl-5">
+        <li v-for="activity in recentActivities" :key="activity.id">
+          {{ activity.description }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="p-4 bg-white shadow rounded-lg">
+      <h2 class="text-xl font-bold mb-2">Notifications</h2>
+      <ul class="list-disc pl-5">
+        <li v-for="notification in notifications" :key="notification.id">
+          {{ notification.message }}
+        </li>
+      </ul>
     </div>
 
   </WorkspaceLayout>

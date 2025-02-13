@@ -17,6 +17,12 @@ defineProps({
     </div>
     <ul class="list-none mx-4">
       <li class="border-b border-amber-700">
+        <a :href='`/workspaces/${workspace.id}`' class=" py-4 flex items-center gap-x-2">
+          <Icon icon="material-symbols:home" />
+          Home
+        </a>
+      </li>
+      <li class="border-b border-amber-700">
         <a :href='`/workspaces/${workspace.id}/meetups`' class=" py-4 flex items-center gap-x-2">
           <Icon icon="material-symbols:group" />
           Meetups

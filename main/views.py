@@ -24,7 +24,7 @@ def login_view(request):
             login(request, user)
             next_path = request.GET.get('next')
             if next_path:
-                return redirect(next_path) 
+                return redirect(next_path)
 
             return redirect('workspaces')
         else:
@@ -44,7 +44,7 @@ def workspaces(request):
     ]
     return render(request, "Dashboard/Workspaces", props={"workspaces": workspaces_json})
 
-@login_required 
+@login_required
 def meetup_list(request, workspace_id):
     workspace = get_object_or_404(Workspace, id=workspace_id)
     meetups = workspace.meetups.all()
@@ -61,10 +61,10 @@ def meetup_list(request, workspace_id):
         "workspace": {
             "id": workspace.id,
             "name": workspace.name,
-        }
+        },
     })
 
-@login_required 
+@login_required
 def meetup_detail(request, workspace_id, meetup_id):
     workspace = get_object_or_404(Workspace, id=workspace_id)
     meetup = get_object_or_404(Meetup, id=meetup_id)
@@ -89,7 +89,7 @@ def meetup_detail(request, workspace_id, meetup_id):
 def add_members(request, workspace_id):
     workspace = get_object_or_404(Workspace, id=workspace_id)
     if request.method == 'POST':
-        # get json response from body 
+        # get json response from body
         byte_data = request.body
         json_data = json.loads(byte_data)
         member_names = json_data.get('member_names')
@@ -98,11 +98,19 @@ def add_members(request, workspace_id):
     return JsonResponse({'success': False})
 
 
-@login_required 
+@login_required
 def workspace_detail(request, workspace_id):
     workspace = get_object_or_404(Workspace, id=workspace_id)
     meetups = workspace.meetups.all()
-    meetups_json = [ 
+    workspace_memberships = WorkspaceMembership.objects.filter(workspace=workspace)
+    members_json = [
+        {
+            "id": member.id,
+            "alias_name": member.alias_name,
+        }
+        for member in workspace_memberships
+    ]
+    meetups_json = [
         {
             "id": meetup.id,
             "name": meetup.name,
@@ -114,6 +122,7 @@ def workspace_detail(request, workspace_id):
         "workspace": {
             "id": workspace.id,
             "name": workspace.name,
+            "members": members_json,
         },
         "meetups": meetups_json,
     })
