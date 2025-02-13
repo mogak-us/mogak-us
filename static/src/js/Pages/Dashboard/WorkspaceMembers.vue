@@ -32,20 +32,22 @@ onMounted(async () => {
 
 <template>
   <WorkspaceLayout :workspace="workspace">
-    <Table>
-      <TableCaption>Workspace Members</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead class="w-[100px]">ID</TableHead>
-          <TableHead>Alias Name</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow v-for="member in members" :key="member.id">
-          <TableCell class="font-medium">{{ member.id }}</TableCell>
-          <TableCell>{{ member.alias_name }}</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <div class="bg-white shadow-md rounded my-6">
+      <Table class="min-w-full bg-white">
+        <TableCaption class="text-lg font-semibold py-4">Workspace Members</TableCaption>
+        <TableHeader>
+          <TableRow class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <TableHead class="py-3 px-6 text-left">ID</TableHead>
+            <TableHead class="py-3 px-6 text-left">Alias Name</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody class="text-gray-600 text-sm font-light">
+          <TableRow v-for="member in members" :key="member.id" class="border-b border-gray-200 hover:bg-blue-50">
+            <TableCell class="py-3 px-6 text-left whitespace-nowrap font-medium">{{ member.id }}</TableCell>
+            <TableCell class="py-3 px-6 text-left">{{ member.alias_name }}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
   </WorkspaceLayout>
 </template>
