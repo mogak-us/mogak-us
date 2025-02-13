@@ -1,9 +1,5 @@
 # Aider configuration file
 
-# Example configuration options
-vim: true
-
-
 ##########################################################
 # Sample .aider.conf.yml
 # This file lists *all* the valid configuration entries.
@@ -400,6 +396,7 @@ read:
  - README.md
  - pyproject.toml
  - .cursorrules
+ - ARCHITECTURE.md
 
 ## Use VI editing mode in the terminal (default: False)
 #vim: false
