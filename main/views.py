@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render as django_rende
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
-from .models import Meetup, MogakUser, Attendance, Workspace
+from .models import Meetup, MogakUser, Attendance, Workspace, WorkspaceMembership
 from inertia import render
 
 
@@ -116,6 +116,25 @@ def workspace_detail(request, workspace_id):
             "name": workspace.name,
         },
         "meetups": meetups_json,
+    })
+
+@login_required
+def workspace_members(request, workspace_id):
+    workspace = get_object_or_404(Workspace, id=workspace_id)
+    workspace_memberships = WorkspaceMembership.objects.filter(workspace=workspace)
+    members_json = [
+        {
+            "id": member.id,
+            "alias_name": member.alias_name,
+        }
+        for member in workspace_memberships
+    ]
+    return render(request, "Dashboard/WorkspaceMembers", props={
+        "workspace": {
+            "id": workspace.id,
+            "name": workspace.name,
+        },
+        "members": members_json,
     })
 
 
