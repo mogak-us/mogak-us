@@ -1,9 +1,10 @@
 <script setup>
 import axios from 'axios';
+import { defineProps, ref } from 'vue';
 
 import WorkspaceLayout from '@/layouts/WorkspaceLayout.vue';
 import MeetupItem from '@/Components/MeetupItem.vue';
-import { ref } from 'vue';
+import Calendar from '@/Components/Calendar.vue';
 
 const props =
   defineProps({
@@ -38,6 +39,10 @@ const notifications = ref([
 
 <template>
   <WorkspaceLayout :workspace="workspace">
+    <div class="p-4 bg-white shadow rounded-lg mb-4">
+      <h2 class="text-xl font-bold mb-2">Calendar</h2>
+      <Calendar />
+    </div>
     <div class="p-4 bg-white shadow rounded-lg mb-4">
       <h2 class="text-xl font-bold mb-2">Meetups</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
