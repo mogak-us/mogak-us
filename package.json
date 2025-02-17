@@ -10,6 +10,7 @@
 	"dependencies": {
 		"@inertiajs/inertia": "^0.11.1",
 		"@inertiajs/vue3": "^1.0.7",
+		"@primevue/themes": "^4.2.5",
 		"@tailwindcss/postcss": "^4.0.5",
 		"@tailwindcss/postcss7-compat": "^2.2.17",
 		"@tailwindcss/vite": "^4.0.5",
@@ -19,6 +20,7 @@
 		"clsx": "^2.1.1",
 		"lucide-vue-next": "^0.475.0",
 		"postcss": "^8.4.16",
+		"primevue": "^4.2.5",
 		"radix-vue": "^1.9.13",
 		"tailwind-merge": "^3.0.1",
 		"tailwindcss": "^4.0.5",

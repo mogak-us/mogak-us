@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="w-full flex">
+  <div class="w-full flex bg-white text-black">
     <WorkspaceSidebar :workspace="workspace" />
     <div class="w-full mx-8 mt-12">
       <slot />
